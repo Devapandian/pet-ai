@@ -55,30 +55,11 @@ def find_best_matching_answer(user_query: str):
 # Streamlit Interface for Chatbot
 st.title("Pet AI Chatbot")
 
-# Initialize chat history
+# Initialize chat history (move this up before accessing it)
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
 
-# Chat history container
-st.markdown("<div style='height: 60vh; overflow-y: auto; display: flex; flex-direction: column;'>", unsafe_allow_html=True)
-for chat in st.session_state['chat_history']:
-    if chat['role'] == 'user':
-        st.markdown(
-            f"<div style='text-align: right; background-color: lightblue; "
-            f"border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
-            f"<b>User:</b> {chat['message']}</div>",
-            unsafe_allow_html=True
-        )
-    elif chat['role'] == 'ai':
-        st.markdown(
-            f"<div style='text-align: left; background-color: lightgreen; "
-            f"border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
-            f"<b>AI:</b> {chat['message']}</div>",
-            unsafe_allow_html=True
-        )
-st.markdown("</div>", unsafe_allow_html=True)
-
-# User input section at the bottom
+# User input section at the bottom (fixed at the bottom of the page)
 user_query = st.text_input("Ask a question:", key="input", placeholder="Type your question here...")
 
 # Process the user input and find the answer
@@ -111,4 +92,23 @@ if user_query:
             f"<b>AI:</b> {answer_text}</div>",
             unsafe_allow_html=True
         )
-        sleep(0.01)  
+        sleep(0.01)
+
+# Create a layout with chat history on top and user input at the bottom
+st.markdown("<div style='overflow-y: auto; display: flex; flex-direction: column; padding-bottom: 20px;'>", unsafe_allow_html=True)
+for chat in st.session_state['chat_history']:
+    if chat['role'] == 'user':
+        st.markdown(
+            f"<div style='text-align: right; background-color: lightblue; "
+            f"border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
+            f"<b>User:</b> {chat['message']}</div>",
+            unsafe_allow_html=True
+        )
+    elif chat['role'] == 'ai':
+        st.markdown(
+            f"<div style='text-align: left; background-color: lightgreen; "
+            f"border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
+            f"<b>AI:</b> {chat['message']}</div>",
+            unsafe_allow_html=True
+        )
+st.markdown("</div>", unsafe_allow_html=True)
