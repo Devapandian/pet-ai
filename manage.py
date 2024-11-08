@@ -87,7 +87,7 @@ if user_query:
     for char in answer:
         answer_text += char
         answer_placeholder.markdown(
-            f"<div style='text-align: left; background-color: white; "
+            f"<div style='text-align: left; background-color: white;color:black; "
             f"border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
             f"<b>AI:</b> {answer_text}</div>",
             unsafe_allow_html=True
@@ -99,14 +99,14 @@ st.markdown("<div style='overflow-y: auto; display: flex; flex-direction: column
 for chat in st.session_state['chat_history']:
     if chat['role'] == 'user':
         st.markdown(
-            f"<div style='text-align: right; background-color: white; "
+            f"<div style='text-align: right; background-color: white;color:black; "
             f"border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
             f"<b>User:</b> {chat['message']}</div>",
             unsafe_allow_html=True
         )
     elif chat['role'] == 'ai':
         st.markdown(
-            f"<div style='text-align: left; background-color: white; "
+            f"<div style='text-align: left; background-color: white;color:black; "
             f"border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
             f"<b>AI:</b> {chat['message']}</div>",
             unsafe_allow_html=True
