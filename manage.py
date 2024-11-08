@@ -72,7 +72,7 @@ if user_query:
     
     # Typing effect for AI response
     answer_placeholder.markdown(
-        "<div style='text-align: left; background-color: lightgreen; "
+        "<div style='text-align: left; background-color: white; "
         "border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
         "<b>AI:</b> Typing...</div>",
         unsafe_allow_html=True
@@ -87,7 +87,7 @@ if user_query:
     for char in answer:
         answer_text += char
         answer_placeholder.markdown(
-            f"<div style='text-align: left; background-color: lightgreen; "
+            f"<div style='text-align: left; background-color: white; "
             f"border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
             f"<b>AI:</b> {answer_text}</div>",
             unsafe_allow_html=True
@@ -99,14 +99,14 @@ st.markdown("<div style='overflow-y: auto; display: flex; flex-direction: column
 for chat in st.session_state['chat_history']:
     if chat['role'] == 'user':
         st.markdown(
-            f"<div style='text-align: right; background-color: lightblue; "
+            f"<div style='text-align: right; background-color: white; "
             f"border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
             f"<b>User:</b> {chat['message']}</div>",
             unsafe_allow_html=True
         )
     elif chat['role'] == 'ai':
         st.markdown(
-            f"<div style='text-align: left; background-color: lightgreen; "
+            f"<div style='text-align: left; background-color: white; "
             f"border-radius: 10px; padding: 10px; margin-bottom: 5px;'>"
             f"<b>AI:</b> {chat['message']}</div>",
             unsafe_allow_html=True
